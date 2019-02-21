@@ -143,7 +143,7 @@ $(document).ready(() => {
             $("#tooLong").show();
         } else {
             $.post("/tweets", serForm);
-            $(".new-tweet").toggle();
+            $(".new-tweet").slideToggle("slow");
             $("#empty").hide();
         $("#tooLong").hide();
         }
@@ -159,7 +159,7 @@ $(document).ready(() => {
     $button.on('click', function(event) {
         event.preventDefault();
 
-        $(".new-tweet").slideToggle("medium");
+        $(".new-tweet").slideToggle("slow");
         $(".new-tweet textarea").focus();
 
     });
