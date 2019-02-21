@@ -3,23 +3,159 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 *, *:before, *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
-
 /*
  * Global layout stuff
  */
 
 body {
-  margin: 0;
-  color: #244751;
-  background-color: #eee;
+    margin: 0;
+}
+.container {
+    width: 60%;
+    height: 1500px;
+    margin: 0 auto;
+    background-color: white;
+}
+.container .new-tweet {
+    width: 88%;
+    margin: 0 auto;
+    /*margin-top: 20px;*/
+    border-radius: 5px;
+    border: 1px solid grey;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+#tooLong {
+    color: black;
+    background-color: #ff6666;
+    padding: 2px;
+    display:flex;
+    display:none;
+}
+
+#empty {
+    color: black;
+    background-color: #ff6666;
+    padding: 2px;
+    display: flex;
+    display:none;
+}
+
+.container header {
+    padding: 10px;
+    background-color: #d1d1e0;
+}
+.container #field {
+    width: 90%;
+    height: 70px;
+    padding: 10px;
+    margin: 10px;
+    margin-left: 35px;
+    box-sizing: border-box;
+    /*border: 2px solid #ccc;*/
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+.container footer {
+    border-top: 1px solid #d1d1e0;
+    padding: 10px;
+}
+.container #charNum {
+    padding-top: 5px;
+    padding-right: 10px;
+    float: right;
+}
+/*-------------------------*/
+
+.tweet-container {
+    width: 88%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.tweet-container .article{
+
+}
+
+.tweet-container .tweet {
+    font-size: 20px;
+    text-align: left;
+    padding: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: white;
+
+}
+.tweet-container .head {
+    display: flex;
+    background-color: #d1d1e0;
+    opacity: 0.5;
+}
+
+.tweet-container .article:hover .head {
+    opacity: 1;
+}
+
+.tweet-container img {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 20px;
+    text-font: 20px;
+    color: red;
+}
+.tweet-container .name {
+    text-font: 20px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.tweet-container .tag {
+    font-weight: lighter;
+    text-size: 10px;
+    padding: 10px;
+    margin-left: auto;
+    color: grey;
+
+}
+.tweet-container .foot {
+    border-top: 1px solid #d1d1e0;
+}
+
+.tweet-container .time {
+    float: left;
+    padding: 10px;
+    opacity: 0.5;
+}
+
+.tweet-container .heart {
+    float: right;
+    padding: 10px;
+    opacity: 0.5;
+}
+
+/*.tweet-container :hover .heart {
+    opacity: 1;
+}
+
+.tweet-container :hover .time {
+    opacity: 1;
+}*/
+
+.tweet-container .dummy {
+    clear: both;
+    display: block;
+}
+
+.new-tweet {
+    display: none;
+}

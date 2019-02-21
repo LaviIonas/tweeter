@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
+    <head>
+        <!-- Meta Information -->
+        <title>
+            Tweeter - Home Page
+        </title>
+        <!-- External CSS -->
+        <link href="/vendor/normalize-4.1.1.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,700,700i" rel="stylesheet">
+            <!-- App CSS -->
+            <link href="/styles/layout.css" rel="stylesheet" type="text/css"/>
+            <link href="/styles/nav.css" rel="stylesheet" type="text/css"/>
+            <!-- External JS -->
+            <script src="/vendor/jquery-2.2.3.min.js" type="text/javascript">
+            </script>
+            <!-- App JS -->
+            <script src="/scripts/app.js" type="text/javascript">
+            </script>
+            <script src="/scripts/composer-char-counter.js" type="text/javascript">
+            </script>
+        </link>
+    </head>
+    <body>
+        <!-- Top nav bar (fixed) -->
+        <nav id="nav-bar">
+            <img class="logo" src="/images/bird.png">
+                <span class="header">
+                    Twitter
+                </span>
+                <button id="compose" type="submit">Compose</button>
+            </img>
+        </nav>
+        <!-- Page-specific (main) content here -->
+        <main class="container">
+            <section class="new-tweet">
+                <header>
+                    <h2 id="compose">
+                        Compose Tweet
+                    </h2>
+                </header>
+                <form id="form" action="/tweets" method="POST">
+                    <span id="tooLong"> ERROR: Tweet is too long</span>
+                    <span id="empty"> ERROR: Tweet is empty</span>
+                    <textarea id="field" name="text" placeholder="What are you humming about?"></textarea>
+                    <footer>
+                        <input id="submit-button" type="submit" value="Tweet">
+                            <span id="charNum">
+                                140
+                            </span>
+                        </input>
+                    </footer>
+                </form>
+            </section>
+            <div class="tweet-container">
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-    <!-- External JS -->
-    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
-
-  <body>
-
-    <!-- Top nav bar (fixed) -->
-    <nav id="nav-bar">
-      <img class="logo" src="/images/bird.png" width="80px" height="80px">
-      <span class="header">Tweeter</span>
-    </nav>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-    </main>
-
-  </body>
+                <!-- Here goes the tweet -->
+            </div>
+        </main>
+    </body>
 </html>
