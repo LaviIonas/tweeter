@@ -1,7 +1,5 @@
-
-
 var createTweetElement = function(tweetData) {
-    console.log(tweetData);
+    //Deconstructs tweet data
     const {
         user,
         content,
@@ -20,6 +18,8 @@ var createTweetElement = function(tweetData) {
     const {
         text
     } = content;
+
+    // assigns html values to later construct them together
     const article = $('<article>', {
         class: 'article'
     });
@@ -53,6 +53,8 @@ var createTweetElement = function(tweetData) {
     const userDummy = $('<span>', {
         class: 'dummy'
     });
+
+    //connect everything together
     header.append(userProfilePicture);
     header.append(userName);
     header.append(userHandle);
@@ -66,6 +68,7 @@ var createTweetElement = function(tweetData) {
 }
 
 function renderTweets(data) {
+    //loop through each tweet and create them
     data.forEach(function(tweet) {
         $('.tweet-container').prepend(createTweetElement(tweet));
     });
@@ -81,14 +84,16 @@ function loadTweets() {
     return;
 }
 $(document).ready(() => {
+    //loads what every existing tweets that exist
     loadTweets();
+
+    //event listener 'on click' to submit a tweet
     var $form = $('#form');
     $form.on('submit', function(event) {
         event.preventDefault();
-        console.log('Button clicked, performing ajax call...');
-        console.log($form.find("#field").val());
+
         var serForm = $(this).serialize();
-        console.log(serForm);
+        //visual error logic
         if ($form.find("#field").val() === "") {
             $("#empty").show();
             $("#tooLong").hide();
@@ -96,14 +101,18 @@ $(document).ready(() => {
             $("#tooLong").show();
             $("#empty").hide();
         }
+        //actual error logic which would prevent submitting a tweet
         if (!($form.find("#field").val() === "") && !($form.find("#field").val().length > 140)) {
             $.post("/tweets", serForm);
             $(".new-tweet").slideToggle("slow");
             $("#empty").hide();
             $("#tooLong").hide();
         }
+        //render the tweet
         loadTweets();
     });
+
+    //on click to toggle the tweet maker
     var $button = $('#compose');
     $button.on('click', function(event) {
         event.preventDefault();
