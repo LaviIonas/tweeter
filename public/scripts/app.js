@@ -18,7 +18,6 @@ var createTweetElement = function(tweetData) {
     const {
         text
     } = content;
-
     // assigns html values to later construct them together
     const article = $('<article>', {
         class: 'article'
@@ -43,6 +42,18 @@ var createTweetElement = function(tweetData) {
     const footer = $('<footer>', {
         class: 'foot'
     });
+    const icon1 = $('<img>', {
+        class: "icon1"
+    });
+    icon1.attr('src', "https://cdn3.iconfinder.com/data/icons/black-easy/512/538774-like_512x512.png");
+    const icon2 = $('<img>', {
+        class: "icon1"
+    });
+    icon2.attr('src', "https://cdn4.iconfinder.com/data/icons/maps-and-navigation-solid-icons-vol-3/72/115-512.png");
+    const icon3 = $('<img>', {
+        class: "icon1"
+    });
+    icon3.attr('src', "https://image.flaticon.com/icons/png/512/127/127998.png");
     const userTime = $('<span>', {
         class: 'time'
     });
@@ -53,13 +64,15 @@ var createTweetElement = function(tweetData) {
     const userDummy = $('<span>', {
         class: 'dummy'
     });
-
     //connect everything together
     header.append(userProfilePicture);
     header.append(userName);
     header.append(userHandle);
     footer.append(userTime);
     footer.append(userLike);
+    footer.append(icon1);
+    footer.append(icon2);
+    footer.append(icon3);
     footer.append(userDummy);
     article.append(header);
     article.append(userTweet);
@@ -87,14 +100,20 @@ $(document).ready(() => {
     //loads what every existing tweets that exist
     loadTweets();
 
+    //On hover shows the icons
+    $('.tweet-container').on('mouseover', '.article', function(e) {
+        $(this).attr("icon1").css("opacity", "1");
+    });
+    $('.tweet-container').on('mouseout', '.article', function(e) {
+        $(this).attr("icon1").css("opacity", "0");
+    });
     //event listener 'on click' to submit a tweet
     var $form = $('#form');
     $form.on('submit', function(event) {
         event.preventDefault();
-
         var serForm = $(this).serialize();
         //visual error logic
-        if ($form.find("#field").val() === "") {
+        if ($form.find("#field").val().trim() === "") {
             $("#empty").show();
             $("#tooLong").hide();
         } else if ($form.find("#field").val().length > 140) {
@@ -102,7 +121,7 @@ $(document).ready(() => {
             $("#empty").hide();
         }
         //actual error logic which would prevent submitting a tweet
-        if (!($form.find("#field").val() === "") && !($form.find("#field").val().length > 140)) {
+        if (!($form.find("#field").val().trim() === "") && !($form.find("#field").val().length > 140)) {
             $.post("/tweets", serForm);
             $(".new-tweet").slideToggle("slow");
             $("#empty").hide();
@@ -111,11 +130,11 @@ $(document).ready(() => {
         //render the tweet
         loadTweets();
     });
-
     //on click to toggle the tweet maker
     var $button = $('#compose');
     $button.on('click', function(event) {
         event.preventDefault();
+        document.getElementById("field").value = "";
         $(".new-tweet").slideToggle("slow");
         $(".new-tweet textarea").focus();
     });
