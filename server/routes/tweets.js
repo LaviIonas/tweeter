@@ -3,7 +3,6 @@
 const userHelper    = require("../lib/util/user-helper")
 
 const express       = require('express');
-const moment = require('moment');
 const tweetsRoutes  = express.Router();
 
 module.exports = function(DataHelpers) {
@@ -27,15 +26,12 @@ module.exports = function(DataHelpers) {
     }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    let date = Date.now();
-    let formatedDate = moment(date).fromNow();
-    console.log(formatedDate);
     const tweet = {
       user: user,
       content: {
         text: req.body.text
       },
-      created_at: formatedDate
+      created_at: Date.now()
     };
 
     DataHelpers.saveTweet(tweet, (err) => {
