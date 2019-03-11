@@ -20,6 +20,5 @@ You have stumbled upon my humble twitter clone where I indeed create a clone nam
 - Mongo DB
 - Body-Parser
 - Chance
-- Moment
 
 ## Thank you!
