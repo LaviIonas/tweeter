@@ -1,7 +1,7 @@
 # Tweeter Project
 
-###Greetings all...
-##You have stumbled upon my humble twitter clone where I indeed create a clone named Tweeter (original: +2)
+Greetings all...
+You have stumbled upon my humble twitter clone where I indeed create a clone named Tweeter (original: +2)
 
 
 ## Getting Started
