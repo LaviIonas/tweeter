@@ -128,12 +128,13 @@ $(document).ready(() => {
         //actual error logic which would prevent submitting a tweet
         if (!($form.find("#field").val().trim() === "") && !($form.find("#field").val().length > 140)) {
             $.post("/tweets", serForm);
+            //render the tweet
+            loadTweets();
             $(".new-tweet").slideToggle("slow");
             $("#empty").hide();
             $("#tooLong").hide();
         }
-        //render the tweet
-        loadTweets();
+
     });
     //on click to toggle the tweet maker
     var $button = $('#compose');
