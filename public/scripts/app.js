@@ -100,13 +100,7 @@ function loadTweets() {
 $(document).ready(() => {
     //loads what every existing tweets that exist
     loadTweets();
-    //On hover shows the icons
-    $('.tweet-container').on('mouseover', '.article', function(e) {
-        $(this).attr("icon1").css("opacity", "1");
-    });
-    $('.tweet-container').on('mouseout', '.article', function(e) {
-        $(this).attr("icon1").css("opacity", "0");
-    });
+
     //event listener 'on click' to submit a tweet
     var $form = $('#form');
     $form.on('submit', function(event) {
