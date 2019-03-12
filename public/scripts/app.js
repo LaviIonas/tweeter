@@ -57,11 +57,8 @@ var createTweetElement = function(tweetData) {
     const userTime = $('<span>', {
         class: 'time'
     });
-    console.log(typeof(created_at));
 
     let time = moment(Number(created_at)).fromNow();
-    console.log(time);
-
     userTime.text(time);
     const userLike = $('<span>', {
         class: 'heart'
