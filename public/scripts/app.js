@@ -124,9 +124,13 @@ $(document).ready(() => {
         }
         //actual error logic which would prevent submitting a tweet
         if (!($form.find("#field").val().trim() === "") && !($form.find("#field").val().length > 140)) {
-            $.post("/tweets", serForm);
-            //render the tweet
-            loadTweets();
+            let myFirstPromise = new Promise((resolve, reject) => {
+                $.post("/tweets", serForm);
+                //render the tweet
+                loadTweets();
+                resolve("Everything well done");
+            });
+
             $(".new-tweet").slideToggle("slow");
             $("#empty").hide();
             $("#tooLong").hide();
