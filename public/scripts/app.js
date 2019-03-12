@@ -57,7 +57,6 @@ var createTweetElement = function(tweetData) {
     const userTime = $('<span>', {
         class: 'time'
     });
-
     let time = moment(Number(created_at)).fromNow();
     userTime.text(time);
     const userLike = $('<span>', {
@@ -101,7 +100,6 @@ function loadTweets() {
 $(document).ready(() => {
     //loads what every existing tweets that exist
     loadTweets();
-
     //On hover shows the icons
     $('.tweet-container').on('mouseover', '.article', function(e) {
         $(this).attr("icon1").css("opacity", "1");
@@ -124,18 +122,14 @@ $(document).ready(() => {
         }
         //actual error logic which would prevent submitting a tweet
         if (!($form.find("#field").val().trim() === "") && !($form.find("#field").val().length > 140)) {
-            let myFirstPromise = new Promise((resolve, reject) => {
-                $.post("/tweets", serForm);
-                //render the tweet
+            $.post("/tweets", serForm)
+            .then(()=>{
                 loadTweets();
-                resolve("Everything well done");
             });
-
             $(".new-tweet").slideToggle("slow");
             $("#empty").hide();
             $("#tooLong").hide();
         }
-
     });
     //on click to toggle the tweet maker
     var $button = $('#compose');
